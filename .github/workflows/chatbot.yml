@@ -16,8 +16,8 @@ jobs:
           uses: appleboy/scp-action@master
           with:
             host: ${{ secrets.PA_HOST }}
-            username: LouisLiu
-            password: Lxz200603
+            username: ${{ secrets.PA_USERNAME }}
+            password: ${{ secrets.PA_PASSWORD }}
             source: "."
             target: "/home/${{ secrets.PA_USERNAME }}/"
   
@@ -35,7 +35,4 @@ jobs:
               export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
               export OPENAI_API_BASE=${{ secrets.OPENAI_API_BASE }}
               export TELEGRAM_ACCESS_TOKEN=${{ secrets.TELEGRAM_ACCESS_TOKEN }}
-              cd /home/${{ secrets.PA_USERNAME }}/
-              # Optional: Install dependencies, if any
-              pip install -r requirements.txt
-              python3 bot.py
+              python3 /home/${{ secrets.PYTHONANYWHERE_USERNAME }}/bot.py
