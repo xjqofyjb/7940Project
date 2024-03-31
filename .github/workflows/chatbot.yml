@@ -35,4 +35,4 @@ jobs:
               export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
               export OPENAI_API_BASE=${{ secrets.OPENAI_API_BASE }}
               export TELEGRAM_ACCESS_TOKEN=${{ secrets.TELEGRAM_ACCESS_TOKEN }}
-              python3 /home/${{ secrets.PYTHONANYWHERE_USERNAME }}/bot.py
+              python3 /home/${{ secrets.PA_USERNAME }}/bot.py
