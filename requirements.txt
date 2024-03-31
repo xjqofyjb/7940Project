@@ -13,3 +13,4 @@ llama-index-readers-file==0.1.13
 llama-index-readers-llama-parse==0.1.4
 llama-parse==0.4.0
 llamaindex-py-client==0.1.15
+langchain_community==0.0.29
