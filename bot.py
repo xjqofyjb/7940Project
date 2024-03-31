@@ -5,7 +5,7 @@ from telegram import Update
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackContext, ConversationHandler
 import os
 
-bot_token = os.environ('TELEGRAM', 'ACCESS_TOKEN')
+bot_token = os.environ("TELEGRAM_ACCESS_TOKEN")
 
 updater = Updater(token=bot_token, use_context=True)
 dispatcher = updater.dispatcher
