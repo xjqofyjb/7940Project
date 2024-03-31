@@ -16,8 +16,8 @@ jobs:
           uses: appleboy/scp-action@master
           with:
             host: ${{ secrets.PA_HOST }}
-            username: ${{ secrets.PA_USERNAME }}
-            password: ${{ secrets.PA_PASSWORD }}
+            username: LouisLiu
+            password: Lxz200603
             source: "."
             target: "/home/${{ secrets.PA_USERNAME }}/"
   
