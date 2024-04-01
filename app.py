@@ -4,9 +4,12 @@ from llama_index.legacy.llm_predictor.base import LLMPredictor
 from langchain_community.llms import OpenAI
 import sys
 import os
+from dotenv import load_dotenv
 
-openai_api_key = os.environ["OPENAI_API_KEY"]
-openai_api_url = os.environ["OPENAI_API_BASE"]
+load_dotenv()
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_api_url = os.getenv("OPENAI_API_BASE")
 
 #Generate json from gpt3.5
 def construct_index(directory_path):

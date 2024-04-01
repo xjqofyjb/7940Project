@@ -4,6 +4,9 @@ import app
 from telegram import Update
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackContext, ConversationHandler
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 bot_token = os.getenv("TELEGRAM_ACCESS_TOKEN")
 

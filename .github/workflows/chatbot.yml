@@ -16,6 +16,12 @@ jobs:
           run: |
             pip install -r requirements.txt
 
+        - name: Env
+          run: |
+            echo OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} >> .env
+            echo OPENAI_API_BASE=${{ secrets.OPENAI_API_BASE }} >> .env
+            echo TELEGRAM_ACCESS_TOKEN=${{ secrets.TELEGRAM_ACCESS_TOKEN }} >> .env
+
         - name: Copy
           uses: appleboy/scp-action@master
           with:
@@ -27,16 +33,9 @@ jobs:
   
         - name: Run
           uses: appleboy/ssh-action@master
-          env:
-            OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-            OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
-            TELEGRAM_ACCESS_TOKEN: ${{ secrets.TELEGRAM_ACCESS_TOKEN }}
           with:
             host: ${{ secrets.PA_HOST }}
             username: ${{ secrets.PA_USERNAME }}
             password: ${{ secrets.PA_PASSWORD }}
             script: |
-              export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
-              export OPENAI_API_BASE=${{ secrets.OPENAI_API_BASE }}
-              export TELEGRAM_ACCESS_TOKEN=${{ secrets.TELEGRAM_ACCESS_TOKEN }}
-              python3 /home/${{ secrets.PA_USERNAME }}/bot.py
+            curl -H "Authorization: Token ${PYTHONANYWHERE_API_TOKEN}" -X POST https://www.pythonanywhere.com/api/v0/user/${{ secrets.PA_USERNAME }}/always-on/restart/
